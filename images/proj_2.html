@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake News Detection</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 400px; height: 280px; overflow: hidden; font-family: 'Syne', sans-serif; background: #f5f0e8; }
+  .card { width: 100%; height: 100%; background: #f5f0e8; position: relative; overflow: hidden; }
+
+  /* Newspaper texture lines */
+  .lines { position: absolute; inset: 0; }
+  .line { position: absolute; left: 0; right: 0; height: 1px; background: rgba(0,0,0,0.06); }
+
+  .stamp {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 3px solid #c0392b;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    transform: rotate(12deg);
+    opacity: 0.9;
+  }
+  .stamp-text { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 700; color: #c0392b; text-align: center; line-height: 1.3; letter-spacing: 0.05em; }
+
+  .content { position: relative; z-index: 2; padding: 26px 28px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+
+  .label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #888; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .headline { font-size: 11px; color: #2c2c2c; line-height: 1.5; font-weight: 400; max-width: 240px; border-left: 3px solid #2c2c2c; padding-left: 10px; }
+
+  .title { font-size: 26px; font-weight: 800; color: #1a1a1a; line-height: 1.1; letter-spacing: -0.03em; }
+  .title span { color: #c0392b; }
+
+  .verdict-row { display: flex; gap: 10px; align-items: center; }
+  .verdict-box {
+    flex: 1; padding: 8px 12px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .verdict-box.fake { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.3); }
+  .verdict-box.real { background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.3); }
+  .verdict-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; }
+  .verdict-box.fake .verdict-label { color: #c0392b; }
+  .verdict-box.real .verdict-label { color: #27ae60; }
+  .verdict-pct { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 700; }
+  .verdict-box.fake .verdict-pct { color: #c0392b; }
+  .verdict-box.real .verdict-pct { color: #27ae60; }
+
+  .tech-row { display: flex; gap: 6px; }
+  .tech-pill { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #666; background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.1); padding: 3px 8px; border-radius: 3px; }
+
+  .accuracy-badge { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #27ae60; background: rgba(39,174,96,0.1); border: 1px solid rgba(39,174,96,0.3); padding: 4px 10px; border-radius: 20px; align-self: flex-start; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="lines">
+    <div class="line" style="top:40px"></div>
+    <div class="line" style="top:80px"></div>
+    <div class="line" style="top:120px"></div>
+    <div class="line" style="top:160px"></div>
+    <div class="line" style="top:200px"></div>
+    <div class="line" style="top:240px"></div>
+  </div>
+
+  <div class="stamp">
+    <div class="stamp-text">FAKE<br>DETECTED<br>✕</div>
+  </div>
+
+  <div class="content">
+    <div>
+      <div class="label">NLP · Classification · 2024</div>
+    </div>
+    <div class="title">Fake News<br><span>Detection</span></div>
+    <div class="headline">"Breaking: Scientists discover chocolate cures all diseases..."</div>
+    <div class="verdict-row">
+      <div class="verdict-box fake">
+        <span class="verdict-label">FAKE</span>
+        <span class="verdict-pct">94%</span>
+      </div>
+      <div class="verdict-box real">
+        <span class="verdict-label">REAL</span>
+        <span class="verdict-pct">6%</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <div class="tech-row">
+        <div class="tech-pill">TF-IDF</div>
+        <div class="tech-pill">Naive Bayes</div>
+        <div class="tech-pill">Streamlit</div>
+      </div>
+      <div class="accuracy-badge">92.5% acc</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
